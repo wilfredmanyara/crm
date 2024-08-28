@@ -13,6 +13,9 @@ class Farmer(db.Model):
     location = db.Column(db.String(150), nullable=False)
     
     products = db.relationship('Product', backref='farmer', lazy=True)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
     
     def __repr__(self):
         return f"<Farmer {self.name}>"
@@ -28,6 +31,9 @@ class Retailer(db.Model):
     
     orders = db.relationship('Order', backref='retailer', lazy=True)
     
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+    
     def __repr__(self):
         return f"<Retailer {self.name}>"
 
@@ -42,6 +48,9 @@ class Product(db.Model):
     date_added = db.Column(db.DateTime, default=datetime.now(timezone.utc))  # Updated to use timezone-aware UTC
     
     farmer_id = db.Column(db.Integer, db.ForeignKey('farmers.id'), nullable=False)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
     
     def __repr__(self):
         return f"<Product {self.name}>"
@@ -58,6 +67,9 @@ class Order(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
     
     product = db.relationship('Product')
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
     
     def __repr__(self):
         return f"<Order {self.id}>"
@@ -73,6 +85,9 @@ class Transaction(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'), nullable=False)
     
     order = db.relationship('Order')
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
     
     def __repr__(self):
         return f"<Transaction {self.id}>"
