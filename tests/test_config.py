@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import sys
+print(sys.path)
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import Config, DevelopmentConfig, TestingConfig, ProductionConfig
