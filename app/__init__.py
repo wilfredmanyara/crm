@@ -12,15 +12,18 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 jwt = JWTManager()
 
+
 def create_app(config_name='default'):
     """Factory function to create and configure the Flask application"""
     app = Flask(__name__)
-
-    # Use the config dictionary to get the correct configuration
     app.config.from_object(config[config_name])
 
     # Initialize extensions with the app
     db.init_app(app)
+
+    with app.app_context():
+        db.create_all()
+
     bcrypt.init_app(app)
     jwt.init_app(app)
 
