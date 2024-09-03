@@ -5,13 +5,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 from config import config
 
 # Initialize extensions
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 jwt = JWTManager()
-
 
 def create_app(config_name='default'):
     """Factory function to create and configure the Flask application"""
@@ -21,6 +21,7 @@ def create_app(config_name='default'):
     # Initialize extensions with the app
     db.init_app(app)
 
+    # Create the database tables if they don't exist
     with app.app_context():
         db.create_all()
 
@@ -28,7 +29,13 @@ def create_app(config_name='default'):
     jwt.init_app(app)
 
     # Import routes and register them
-    from app.routes import init_routes  # Move this import to the top
-    init_routes(app)  # Call the function to register routes
+    from app.routes import init_routes
+    init_routes(app)
 
     return app
+
+migrate = Migrate()
+
+app = create_app()
+migrate.init_app(app, db)
+
