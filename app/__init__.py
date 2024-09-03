@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 # app/__init__.py
 
-#!/usr/bin/python3
-# app/__init__.py
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -32,4 +29,3 @@ def create_app(config_name='default'):
     init_routes(app)  # Call the function to register routes
 
     return app
-

@@ -7,7 +7,7 @@ from app.models import Farmer, Retailer, Product, Order, Transaction, db
 routes = Blueprint('routes', __name__)
 
 # Home route
-@routes.route("/", strict_slashes=False)
+@routes.route('/', strict_slashes=False)
 def home():
     return 'hello'
 
@@ -100,4 +100,3 @@ def get_transactions():
 # Register the blueprint
 def init_routes(app):
     app.register_blueprint(routes)
-
