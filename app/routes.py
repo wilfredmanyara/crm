@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from app.models import Farmer, Retailer, Product, Order, Transaction, db
-from flask import render_template
 
 # Blueprint
 routes = Blueprint('routes', __name__)

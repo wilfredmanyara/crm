@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SokoFresh</title>
+</head>
+<body>
+    <h1>Welcome to SokoFresh</h1>
+
+    <!-- Displaying data from API -->
+    {% if farmers %}
+        <h2>Farmers:</h2>
+        <ul>
+            {% for farmer in farmers %}
+                <li>{{ farmer.name }} (ID: {{ farmer.id }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form to add new farmer -->
+    <form id="add-farmer-form">
+        <input type="text" id="farmer-name" placeholder="Enter farmer name">
+        <button type="submit">Add Farmer</button>
+    </form>
+
+    <!-- Displaying data from API -->
+    {% if retailers %}
+        <h2>Retailers:</h2>
+        <ul>
+            {% for retailer in retailers %}
+                <li>{{ retailer.name }} (ID: {{ retailer.id }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form to add new retailer -->
+    <form id="add-retailer-form">
+        <input type="text" id="retailer-name" placeholder="Enter retailer name">
+        <button type="submit">Add Retailer</button>
+    </form>
+
+    <!-- Displaying data from API -->
+    {% if products %}
+        <h2>Products:</h2>
+        <ul>
+            {% for product in products %}
+                <li>{{ product.name }} (ID: {{ product.id }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form to add new product -->
+    <form id="add-product-form">
+        <input type="text" id="product-name" placeholder="Enter product name">
+        <input type="number" id="product-price" placeholder="Enter product price">
+        <button type="submit">Add Product</button>
+    </form>
+
+    <!-- Displaying data from API -->
+    {% if orders %}
+        <h2>Orders:</h2>
+        <ul>
+            {% for order in orders %}
+                <li>Order ID: {{ order.id }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form to create new order -->
+    <form id="create-order-form">
+        <select id="order-farmer" name="farmer_id">
+            <option value="">Select Farmer</option>
+            {% for farmer in farmers %}
+                <option value="{{ farmer.id }}">{{ farmer.name }}</option>
+            {% endfor %}
+        </select>
+        <select id="order-retailer" name="retailer_id">
+            <option value="">Select Retailer</option>
+            {% for retailer in retailers %}
+                <option value="{{ retailer.id }}">{{ retailer.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="number" id="order-quantity" placeholder="Quantity">
+        <button type="submit">Create Order</button>
+    </form>
+
+    <!-- Displaying data from API -->
+    {% if transactions %}
+        <h2>Transactions:</h2>
+        <ul>
+            {% for transaction in transactions %}
+                <li>Amount: {{ transaction.amount }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form to create new transaction -->
+    <form id="create-transaction-form">
+        <select id="transaction-farmer" name="farmer_id">
+            <option value="">Select Farmer</option>
+            {% for farmer in farmers %}
+                <option value="{{ farmer.id }}">{{ farmer.name }}</option>
+            {% endfor %}
+        </select>
+        <select id="transaction-retailer" name="retailer_id">
+            <option value="">Select Retailer</option>
+            {% for retailer in retailers %}
+                <option value="{{ retailer.id }}">{{ retailer.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="number" id="transaction-amount" placeholder="Amount">
+        <button type="submit">Create Transaction</button>
+    </form>
+</body>
+</html>
+

@@ -13,6 +13,11 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 jwt = JWTManager()
 
+app = Flask(__name__, template_folder='frontend/templates')
+
+from app.routes import init_routes
+init_routes(app)
+
 def create_app(config_name='default'):
     """Factory function to create and configure the Flask application"""
     app = Flask(__name__)
