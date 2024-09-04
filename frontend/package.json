@@ -1,0 +1,25 @@
+{
+  "name": "Sokofresh-mvp",
+  "version": "1.0.0",
+  "description": "A simple marketplace MVP for farmers and retailers.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server public",
+    "build": "echo 'No build process defined'",
+    "test": "echo 'No tests defined'",
+    "lint": "echo 'No linting defined'"
+  },
+  "keywords": [
+    "marketplace",
+    "farmers",
+    "retailers",
+    "MVP"
+  ],
+  "author": "Tinayo Keiya and Kelvin Muthomi",
+  "license": "Wakulima Sacco",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  },
+  "dependencies": {}
+}
+
