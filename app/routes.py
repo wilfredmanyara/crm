@@ -2,6 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from app.models import Farmer, Retailer, Product, Order, Transaction, db
+from flask import render_template
 
 # Blueprint
 routes = Blueprint('routes', __name__)
@@ -9,7 +10,7 @@ routes = Blueprint('routes', __name__)
 # Home route
 @routes.route('/', strict_slashes=False)
 def home():
-    return 'hello'
+    return render_template('index.html')
 
 # Routes for Farmers
 @routes.route('/farmers', methods=['POST'])
