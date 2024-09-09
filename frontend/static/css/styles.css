@@ -98,3 +98,52 @@ footer {
     position: fixed;
     width: 100%;
 }
+<div class="button-container">
+  <a href="#" class="btn btn-primary">View Farmers</a>
+  <a href="#" class="btn btn-secondary">View Retailers</a>
+  <a href="#" class="btn btn-success">View Products</a>
+  <a href="#" class="btn btn-info">View Orders</a>
+  <a href="#" class="btn btn-warning">View Transactions</a>
+</div>
+
+<style>
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary { background-color: #007bff; color: white; }
+  .btn-secondary { background-color: #6c757d; color: white; }
+  .btn-success { background-color: #28a745; color: white; }
+  .btn-info { background-color: #17a2b8; color: white; }
+  .btn-warning { background-color: #ffc107; color: black; }
+
+  @media (max-width: 768px) {
+    .btn {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+  }
+
+  .btn:focus,
+  .btn:active {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  }
+</style>
+
